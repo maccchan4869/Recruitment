@@ -4,9 +4,11 @@ class Admin::UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def show
+    @user = User.find(params[:id])
   end
 
   def index
@@ -39,7 +41,7 @@ class Admin::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :admin, :password, :password_confirmation)
+    params.require(:user).permit(:login_id,:name, :email, :admin, :password, :password_confirmation)
   end
 
   def set_user
